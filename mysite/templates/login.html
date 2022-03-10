@@ -28,104 +28,44 @@
     </head>
     <body>
         <center>
-            <div id="home"><h3>{{heading}}</h3>
-                <span>Hello    {{name}}</span><br>
-                <span>    {{email}}</span><br>
-            <a href="/logout/">Logout</a>
-        </div>
+            <div id="home"><h3>{{heading}}</h3></div>
         </center>
         <br>
         <hr>
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6 mx-auto">
                     <div class="card">
                         <div class="card-title text-center">
                              <h3>
-                                {% if single_data is none %}
-                                 Save Data
-                                 {% else %}
-                                 Update Data
-                                 {% endif %}
-                                </h3>
+                                Login
                             </div>
                         <div class="card-body">
-                            {% if single_data  %}
-                           <form class="form-group" method="post" action="update_data/{{single_data.id}}">
+                    
+                           <form class="form-group" method="post" action="/login_store/">
                                {% csrf_token %}
                                <div class="form-group">
-                                   <label for="name">Name</label>
-                                   <input type="text" name="name" id="name" class="form-control" value="{{single_data.name}}" required >
+                                   <label for="email">Email</label>
+                                   <input type="email" name="email" id="email" class="form-control"  required >
                                   
                                </div>
                                <div class="form-group">
-                                <label for="addr">Adress</label>
-                                <input type="text" name="addr" id="addr" class="form-control"  value="{{single_data.address}}" required>
+                                <label for="password">Password</label>
+                                <input type="password" name="password" id="password" class="form-control"   required>
                                   
                                </div>
                                <div class="form-group">
-                                <input type="submit" class="btn btn-success form-control" value="Update">
+                                <input type="submit" class="btn btn-success form-control" value="Login">
                                   
                                </div>
                            </form>
-                           {% else %}
-                           <form class="form-group" method="post" action="save_data/">
-                            {% csrf_token %}
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" name="name" id="name" class="form-control" required>
-                               
-                            </div>
-                            <div class="form-group">
-                             <label for="addr">Adress</label>
-                             <input type="text" name="addr" id="addr" class="form-control" required>
-                               
-                            </div>
-                            <div class="form-group">
-                             <input type="submit" class="btn btn-success form-control" value="Save">
-                               
-                            </div>
-                        </form>
-                           {% endif %}
+                           <a href="\register">&larr; Create Account</a>
+                           {{status}}
+                        
                         </div>
                     </div>
                 </div>
 
-
-                <div class="col-md-8">
-                    <div class="card">
-                        <div class="card-title text-center"> <h3>Manage Data</h3></div>
-                        <div class="card-body">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Adress</th>
-                                        <th>Action</th>
-                                        
-                                    </tr>
-                                </thead>
-                                {% for a in data %}
-                                <tr>
-                                    <td>{{a.name}}</td>
-                                    <td>{{a.address}}</td>
-                                    <td>
-                                        <a class="btn btn-sm btn-primary " href="/edit/{{a.id}}" onclick="edit_cnf(event)">Edit</a>
-                                        <a class="btn btn-sm btn-danger" href="/delete/{{a.id}}" onclick="del_cnf(event)">Delete</a>
-                                    </td>
-                                  
-                                </tr>
-                                {% endfor %}
-                              
-                                <tbody>
-                                    
-                                </tbody>
-
-                            </table>
-                           
-                        </div>
-                    </div>
-                </div>
                
             </div>
         </div>

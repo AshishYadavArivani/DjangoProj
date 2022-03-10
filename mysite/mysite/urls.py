@@ -17,7 +17,10 @@ from unicodedata import name
 from django.urls import include
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import handler404
 from mysite import views
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -34,4 +37,14 @@ urlpatterns = [
     path('delete/<id>', views.delete_detail),
     path('edit/<id>', views.edit_detail),
     path('edit/update_data/<id>', views.update_detail,name='update'),
+    path('register/', views.register,name='register'),
+    path('store_register/', views.store_register,name='store_register'),
+    path('login/', views.login),
+    path('login_store/', views.login_store),
+    path('logout/', views.logout),
+
+    path('session_set/', views.session_set),
+    path('session_get/', views.session_get),
+    path('session_delete/', views.session_delete),
 ]
+handler404 = views.bad_request
