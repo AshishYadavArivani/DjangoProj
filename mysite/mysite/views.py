@@ -191,5 +191,16 @@ def bad_request(request, exception):
    return render(request,'404.html', context)
 
 
+def multi_frm(request):
+     return render(request,'multi_form.html')
+
+
+def multi_save(request):
+    print(request.POST)
+    return render(request,'multi_form.html')
+
+
+    
+
 
    

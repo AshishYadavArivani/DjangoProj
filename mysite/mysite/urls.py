@@ -46,5 +46,8 @@ urlpatterns = [
     path('session_set/', views.session_set),
     path('session_get/', views.session_get),
     path('session_delete/', views.session_delete),
+
+    path('multi_frm/', views.multi_frm),
+    path('multi_save/', views.multi_save),
 ]
 handler404 = views.bad_request
